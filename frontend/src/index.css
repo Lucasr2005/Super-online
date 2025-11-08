@@ -1,6 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&display=swap");
 @import "tailwindcss";
 
 body {
-  background-color: rgb(240, 240, 240);
-  font-family: roboto;
+  background-color: #fafafa;
+  font-family: "Zalando Sans SemiExpanded", sans-serif;
+  font-optical-sizing: auto;
 }

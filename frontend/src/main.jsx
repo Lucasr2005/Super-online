@@ -4,8 +4,8 @@ import "./index.css";
 import WebRoutes from "./WebRoutes.jsx";
 import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
-
-const reducers = combineReducers({});
+import { productsReducer } from "./reducers/products/products.reducer.js";
+const reducers = combineReducers({ products: productsReducer });
 const store = createStore(reducers);
 
 createRoot(document.getElementById("root")).render(

@@ -2,9 +2,16 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import WebRoutes from "./WebRoutes.jsx";
+import { createStore, combineReducers } from "redux";
+import { Provider } from "react-redux";
+
+const reducers = combineReducers({});
+const store = createStore(reducers);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <WebRoutes />
+    <Provider store={store}>
+      <WebRoutes />
+    </Provider>
   </StrictMode>
 );

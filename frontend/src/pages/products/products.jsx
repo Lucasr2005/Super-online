@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { getProducts } from "../../services/products.js";
 import { displayProducts } from "./functions/display.products.jsx";
 import { normalizeString } from "./functions/normalizeString.js";
+import { FiltersMenu } from "./components/FiltersMenu.jsx";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -19,6 +20,7 @@ function Products() {
 
   return (
     <section className="max-w-screen my-10">
+      <FiltersMenu products={products} />
       <div className="grid grid-cols-2 mx-3 gap-y-5 gap-x-3">{displayProducts(products)}</div>
     </section>
   );

@@ -23,21 +23,26 @@ export function FiltersMenu({ products }) {
   };
 
   return (
-    <section className="w-full h-screen bg-gray-300 absolute z-10">
+    <section className="w-full h-screen bg-gray-300 absolute z-10 p-4">
       <DisplayCategory
         key={CATEGORIES[0]}
         category={CATEGORIES[0]}
         options={filterOptions.subCategories}
         setOption={setSubCategory}
       />
-      <DisplayCategory
-        key={CATEGORIES[1]}
-        category={CATEGORIES[1]}
-        options={filterOptions.brands}
-        setOption={setBrand}
-      />
+      <div className="mt-4">
+        <DisplayCategory
+          key={CATEGORIES[1]}
+          category={CATEGORIES[1]}
+          options={filterOptions.brands}
+          setOption={setBrand}
+        />
+      </div>
 
-      <p className="w-full text-center text-lg text-blue-400 underline cursor-pointer  mt-10">
+      <p
+        className="w-full text-center text-lg text-blue-400 underline cursor-pointer pt-10"
+        onClick={() => dispatch({ type: "@filters/setDisplay", payload: false })}
+      >
         Aplicar
       </p>
     </section>

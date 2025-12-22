@@ -1,5 +1,7 @@
 import { useMemo } from "react";
 import { DisplayCategory } from "./DisplayCategory";
+import { useDispatch } from "react-redux";
+
 const CATEGORIES = ["Sub-categoría", "Marca"];
 export function FiltersMenu({ products }) {
   const filterOptions = useMemo(() => {
@@ -12,6 +14,13 @@ export function FiltersMenu({ products }) {
 
     return { subCategories, brands };
   }, [products]);
+  const dispatch = useDispatch();
+  const setSubCategory = (category) => {
+    dispatch({ type: "@filters/setSubCategory", payload: category });
+  };
+  const setBrand = (brand) => {
+    dispatch({ type: "@filters/setBrand", payload: brand });
+  };
 
   return (
     <section className="w-full h-screen bg-gray-300 absolute z-10">
@@ -19,11 +28,13 @@ export function FiltersMenu({ products }) {
         key={CATEGORIES[0]}
         category={CATEGORIES[0]}
         options={filterOptions.subCategories}
+        setOption={setSubCategory}
       />
       <DisplayCategory
         key={CATEGORIES[1]}
         category={CATEGORIES[1]}
         options={filterOptions.brands}
+        setOption={setBrand}
       />
 
       <p className="w-full text-center text-lg text-blue-400 underline cursor-pointer  mt-10">

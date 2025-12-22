@@ -1,6 +1,6 @@
 import { DisplayOptions } from "./DisplayOptions";
 
-export function DisplayCategory({ category, options }) {
+export function DisplayCategory({ category, options, setOption }) {
   return (
     <div
       key={category}
@@ -8,7 +8,11 @@ export function DisplayCategory({ category, options }) {
     >
       <h3 className="text-lg font-semibold capitalize">{category}</h3>
       <section>
-        <DisplayOptions options={options} />
+        <DisplayOptions
+          options={options}
+          setOption={setOption}
+          name={category}
+        />
       </section>
     </div>
   );

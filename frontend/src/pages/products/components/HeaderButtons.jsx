@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
-
+import filterImg from "../images/filter.png";
+import orderByImg from "../images/orderBy.png";
 export function HeaderButtons() {
   const dispatch = useDispatch();
   return (
@@ -11,7 +12,7 @@ export function HeaderButtons() {
         <p>Agregar filtros</p>
         <img
           className="w-5"
-          //   src={filterImg}
+          src={filterImg}
           alt=""
         />
       </div>
@@ -19,7 +20,7 @@ export function HeaderButtons() {
         <p className=" xl:text-xl">Ordenar por</p>
         <img
           className="w-5"
-          //   src={orderByImg}
+          src={orderByImg}
           alt=""
         />
       </div>

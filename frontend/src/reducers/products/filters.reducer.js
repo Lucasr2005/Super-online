@@ -1,24 +1,39 @@
-const ALL = "ALL"
 const initialState = {
-    category: ALL,
-    subCategory: ALL,
-    brand: ALL,
-    minPrice: 0,
-    maxPrice: 999999
+    category: "ALL",
+    subCategory: [],
+    brand: [],
+    display: false
 }
+
+const checkIfExistsAndAdd = (array, item) => {
+    const alreadyExists = array.includes(item);
+    return alreadyExists
+        ? array.filter(element => element !== item)
+        : [...array, item];
+}
+
 export const filtersReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case "@filters/setCategory":
-            return { ...state, category: action.payload }
-        case "@filters/setSubCategory":
-            return { ...state, subCategory: action.payload }
-        case "@filters/setBrand":
-            return { ...state, brand: action.payload }
-        case "@filters/setMinPrice":
-            return { ...state, minPrice: action.payload }
-        case "@filters/setMaxPrice":
-            return { ...state, maxPrice: action.payload }
+        case "@filters/setCategory": {
+            return { ...state, category: action.payload };
+        }
+
+        case "@filters/setSubCategory": {
+            const newSubCategory = checkIfExistsAndAdd(state.subCategory, action.payload);
+
+            return { ...state, subCategory: newSubCategory };
+        }
+
+        case "@filters/setBrand": {
+            const newBrand = checkIfExistsAndAdd(state.brand, action.payload);
+
+            return { ...state, brand: newBrand };
+        }
+
+        case "@filters/setDisplay":
+            return { ...state, display: action.payload };
+
         default:
             return state;
     }

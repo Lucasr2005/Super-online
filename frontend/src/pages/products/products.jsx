@@ -23,7 +23,6 @@ function Products() {
         ? productsByCategory.filter((p) => filters.subCategory.includes(p.sub_category))
         : productsByCategory;
 
-    // Finalmente, aplicamos los filtros de marca si existen
     const withBrand =
       filters.brand.length > 0
         ? withSubCategory.filter((p) => filters.brand.includes(p.brand))

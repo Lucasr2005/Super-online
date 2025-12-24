@@ -1,10 +1,11 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Home from "./pages/home/home.jsx";
-import Products from "./pages/products/products.jsx";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getProducts } from "./services/products.js";
 import { fetchProducts } from "./functions/fetch.Products.js";
+import Home from "./pages/home/home.jsx";
+import Products from "./pages/products/products.jsx";
+import Cart from "./pages/cart/cart.jsx";
 
 function WebRoutes() {
   const dispatch = useDispatch();
@@ -25,6 +26,10 @@ function WebRoutes() {
         <Route
           path="/productos/:category"
           element={<Products />}
+        />
+        <Route
+          path="/carrito"
+          element={<Cart />}
         />
       </Routes>
     </BrowserRouter>

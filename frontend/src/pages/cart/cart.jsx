@@ -1,12 +1,15 @@
 import { useSelector } from "react-redux";
 import { Product } from "./components/product.jsx";
+import { ShippingAddress } from "./components/shippingAddress.jsx";
+import { useState } from "react";
 
 function Cart() {
   const products = useSelector((state) => state.products);
   const cart = useSelector((state) => state.cart);
+  const [address, setAddress] = useState({});
 
   return (
-    <>
+    <div className="">
       <h2 className="text-2xl font-semibold m-5">Mis productos</h2>
       <section className="mx-5 flex flex-col gap-5">
         {cart &&
@@ -27,7 +30,12 @@ function Cart() {
             );
           })}
       </section>
-    </>
+
+      <ShippingAddress
+        address={address}
+        setAddress={setAddress}
+      />
+    </div>
   );
 }
 

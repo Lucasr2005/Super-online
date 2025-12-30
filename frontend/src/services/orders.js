@@ -13,6 +13,6 @@ export async function getShippingPrice(address) {
         return response.data;
     } catch (error) {
         console.error(error);
-        return "error";
+        throw new Error(error.response?.data || "Ocurrió un error al calcular el precio de envío.");
     }
 }

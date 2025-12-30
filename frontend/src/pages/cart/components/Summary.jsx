@@ -11,7 +11,7 @@ export function Summary({ total, shippingPrice }) {
       </div>
       <div className="flex items-center justify-between">
         <span className="text-sm">Total</span>
-        <span className="font-semibold">${total + shippingPrice}</span>
+        <span className="font-semibold">${(total + shippingPrice).toFixed(2)}</span>
       </div>
     </>
   );

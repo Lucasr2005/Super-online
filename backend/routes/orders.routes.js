@@ -53,7 +53,10 @@ router.post("/shippingPrice", async (req, res) => {
         if (!distanceInMeters) {
             return res.status(400).send("No se pudo calcular una ruta a la dirección proporcionada.");
         }
-        return res.status(200).json({ distanceInMeters: distanceInMeters });
+
+        const shippingPrice = Math.max(MINIMUM_FEE, distanceInMeters * ROUND_TRIP_MULTIPLIER * FUEL_CONSUMPTION_PER_METER * FUEL_PRICE);
+
+        res.status(200).json({ price: Math.round(shippingPrice) });
 
     } catch (error) {
         console.error(error);

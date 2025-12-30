@@ -6,16 +6,21 @@ export async function register(req, res) {
     const { name, lastName, email, password } = req.body
 
     if (!name || !lastName || !email || !password) {
-        return res.status(400).send("Datos incompletos")
+        return res.status(400).send({ message: "Datos incompletos" })
     }
 
     try {
+        const findEmail = await pool.query("SELECT email FROM users WHERE email =$1", [email])
+        if (findEmail.rows.length > 0) {
+            return res.status(400).send({ message: "Email ya existente" })
+        }
+
         const hashedPassword = passwordHash.generate(password)
 
         const result = await pool.query("INSERT INTO users (name, last_name, email, password) VALUES ($1, $2, $3, $4) RETURNING id", [name, lastName, email, hashedPassword])
 
         if (result.rows.length === 0) {
-            return res.status(500).send("Ha ocurrido un error al crear el usuario")
+            return res.status(500).send({ message: "Ha ocurrido un error al crear el usuario" })
         }
 
         const id = result.rows[0].id

@@ -1,14 +1,33 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { InputField } from "./components/inputField.jsx";
+import { registerUser } from "../../services/users.js";
+const handleSubmit = (e, formData, setError) => {
+  e.preventDefault();
+  if (formData.password !== formData.password_confirm) {
+    alert("Las contraseñas no coinciden.");
+    return;
+  }
+  registerUser(formData)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      setError(err);
+      setTimeout(() => setError(null), 5000);
+    });
+};
 
 function Register() {
   const [formData, setFormData] = useState({
+    name: "",
+    lastName: "",
     email: "",
     password: "",
     password_confirm: "",
   });
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,33 +37,39 @@ function Register() {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (formData.password !== formData.password_confirm) {
-      alert("Las contraseñas no coinciden.");
-      return;
-    }
-    // Aquí iría la lógica para registrar al usuario (ej. una llamada a la API)
-    console.log("Usuario a registrar:", formData);
-    alert("Usuario creado exitosamente (simulación).");
-  };
-
   return (
     <section className="flex justify-center items-center h-screen">
       <form
         className="flex flex-col w-80 gap-5 px-3"
-        onSubmit={handleSubmit}
+        onSubmit={(e) => handleSubmit(e, formData, setError)}
       >
         <h2 className="text-2xl font-semibold">Registrarse</h2>
+        <p className="text-red-600 min-h-[1.5rem]">{error ? error.message : ""}</p>
+        <div className="flex gap-5">
+          <InputField
+            label="Nombre"
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+          />
+          <InputField
+            label="Apellido"
+            type="text"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
+          />
+        </div>
         <InputField
-          label="Ingrese su email"
+          label="Email"
           type="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
         />
         <InputField
-          label="Ingrese su contraseña"
+          label="Contraseña"
           type={showPassword ? "text" : "password"}
           name="password"
           value={formData.password}

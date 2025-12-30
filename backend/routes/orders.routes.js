@@ -28,6 +28,14 @@ const getCoordinatesFromAddress = async (address) => {
     return geoResponse.data.features[0].geometry.coordinates;
 }
 
+const getDistanceInMeters = async (STORE_COORDINATES, destinationCoordinates) => {
+    const openRoutesUrl = `https://api.openrouteservice.org/v2/directions/driving-car?api_key=${process.env.OPENROUTES_APY_KEY}&start=${STORE_COORDINATES.join(',')}&end=${destinationCoordinates.join(',')}`;
+    const routeResponse = await axios.get(openRoutesUrl);
+    if (!routeResponse.data.features || routeResponse.data.features.length === 0) {
+        return null;
+    }
+    return routeResponse.data.features[0].properties.summary.distance;
+}
 
 router.post("/shippingPrice", async (req, res) => {
     const { address } = req.body;
@@ -41,7 +49,11 @@ router.post("/shippingPrice", async (req, res) => {
         if (!destinationCoordinates) {
             return res.status(404).send("No se pudieron encontrar las coordenadas para la dirección proporcionada. Verifique que sea correcta.");
         }
-        return res.status(200).send({ coordinates: destinationCoordinates });
+        const distanceInMeters = await getDistanceInMeters(STORE_COORDINATES, destinationCoordinates);
+        if (!distanceInMeters) {
+            return res.status(400).send("No se pudo calcular una ruta a la dirección proporcionada.");
+        }
+        return res.status(200).json({ distanceInMeters: distanceInMeters });
 
     } catch (error) {
         console.error(error);

@@ -6,7 +6,12 @@ import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
 import { productsReducer } from "./reducers/products/products.reducer.js";
 import { filtersReducer } from "./reducers/products/filters.reducer.js";
-const reducers = combineReducers({ products: productsReducer, filters: filtersReducer });
+import { cartReducer } from "./reducers/products/cart.reducer.js";
+const reducers = combineReducers({
+  products: productsReducer,
+  filters: filtersReducer,
+  cart: cartReducer,
+});
 const store = createStore(reducers);
 
 createRoot(document.getElementById("root")).render(

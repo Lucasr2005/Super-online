@@ -1,5 +1,6 @@
 import pool from "../database/db.connection.js"
 import passwordHash from "password-hash"
+import jwt from "jsonwebtoken";
 
 export async function register(req, res) {
     const { name, lastName, email, password } = req.body
@@ -16,6 +17,16 @@ export async function register(req, res) {
         if (result.rows.length === 0) {
             return res.status(500).send("Ha ocurrido un error al crear el usuario")
         }
+
+        const id = result.rows[0].id
+        const token = jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+
+        res.cookie('auth_token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'strict',
+            maxAge: 7 * 24 * 60 * 60 * 1000
+        })
 
         return res.status(201).json({ message: "Usuario creado con éxito" })
     } catch (error) {

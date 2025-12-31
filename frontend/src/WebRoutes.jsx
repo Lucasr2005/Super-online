@@ -7,6 +7,7 @@ import Home from "./pages/home/home.jsx";
 import Products from "./pages/products/products.jsx";
 import Cart from "./pages/cart/cart.jsx";
 import Register from "./pages/register/register.jsx";
+import Login from "./pages/register/login.jsx";
 
 function WebRoutes() {
   const dispatch = useDispatch();
@@ -27,6 +28,10 @@ function WebRoutes() {
         <Route
           path="/registro"
           element={<Register />}
+        />
+        <Route
+          path="/login"
+          element={<Login />}
         />
         <Route
           path="/productos/:category"

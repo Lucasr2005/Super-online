@@ -2,7 +2,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getProducts } from "./services/products.js";
-import { fetchProducts } from "./functions/fetch.Products.js";
+import { fetchProducts } from "./functions/fetch.products.js";
 import Home from "./pages/home/home.jsx";
 import Products from "./pages/products/products.jsx";
 import Cart from "./pages/cart/cart.jsx";

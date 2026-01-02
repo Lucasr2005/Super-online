@@ -1,5 +1,5 @@
 import express from "express"
-import { getShippingPrice } from "../controllers/orders.functions.js";
+import { createMPOrder, getShippingPrice } from "../controllers/orders.functions.js";
 
 const router = express.Router()
 
@@ -8,4 +8,8 @@ router.get("/orders", (req, res) => {
 })
 
 router.post("/shippingPrice", getShippingPrice)
+
+router.post("/mercadoPago", createMPOrder)
+
 export default router
+

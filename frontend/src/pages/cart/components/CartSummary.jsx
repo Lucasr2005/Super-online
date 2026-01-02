@@ -1,11 +1,16 @@
 import { getShippingPrice } from "../../../services/orders.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Summary } from "./Summary";
+import { MercadoPagoPayment } from "./MercadoPagoPayment.jsx";
 
 export function CartSummary({ total, address }) {
   const [shippingPrice, setShippingPrice] = useState(0);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setShippingPrice(0);
+  }, [address]);
 
   const handleGetShippingCost = async () => {
     setIsLoading(true);
@@ -27,16 +32,17 @@ export function CartSummary({ total, address }) {
         total={total}
         shippingPrice={shippingPrice}
       />
-      {address.homeType && (
+
+      {address.homeType && shippingPrice === 0 && (
         <button
-          className="bg-black py-2 opacity-85 text-white w-full rounded-lg mt-3"
-          name="shipping"
+          className="bg-black py-2 opacity-85 text-white w-full rounded-lg mt-3 disabled:opacity-50"
           onClick={handleGetShippingCost}
           disabled={isLoading}
         >
           {isLoading ? "Calculando..." : "Calcular envío"}
         </button>
       )}
+      <MercadoPagoPayment shippingPrice={shippingPrice} />
       {error && <p className="text-red-600 mt-2">{error.message}</p>}
     </section>
   );

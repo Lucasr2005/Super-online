@@ -100,13 +100,16 @@ export async function createMPOrder(req, res) {
         const preference = new Preference(client);
 
         const resultMP = await preference.create({
-            body: { items }, back_urls: {
-                success: process.env.CLIENT_URL + "/pago/pendiente",
-                failure: process.env.CLIENT_URL + "/pago/rechazado",
-                pending: process.env.CLIENT_URL + "/pago/pendiente"
-            },
-            auto_return: "approved",
-        })
+            body: {
+                items,
+                back_urls: {
+                    success: process.env.MP_SUCCESS,
+                    failure: process.env.MP_FAILURE,
+                    pending: process.env.MP_PENDING
+                },
+                auto_return: "approved",
+            }
+        });
         if (!resultMP) {
             return res.status(500).send("Ha ocurrido un error al crear la orden");
         }

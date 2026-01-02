@@ -99,7 +99,14 @@ export async function createMPOrder(req, res) {
         const client = new MercadoPagoConfig({ accessToken: process.env.MP_ACCESS_TOKEN });
         const preference = new Preference(client);
 
-        const resultMP = await preference.create({ body: { items } })
+        const resultMP = await preference.create({
+            body: { items }, back_urls: {
+                success: process.env.CLIENT_URL + "/pago/pendiente",
+                failure: process.env.CLIENT_URL + "/pago/rechazado",
+                pending: process.env.CLIENT_URL + "/pago/pendiente"
+            },
+            auto_return: "approved",
+        })
         if (!resultMP) {
             return res.status(500).send("Ha ocurrido un error al crear la orden");
         }

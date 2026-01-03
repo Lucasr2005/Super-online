@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { displayProducts } from "./functions/display.products.jsx";
 import { normalizeString } from "./functions/normalizeString.js";
 import { FiltersMenu } from "./components/FiltersMenu.jsx";
-import { HeaderButtons } from "./components/Headerbuttons.jsx";
+import { HeaderButtons } from "./components/HeaderButtons.jsx";
 import { useSelector } from "react-redux";
 
 function Products() {

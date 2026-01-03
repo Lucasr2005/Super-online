@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Product } from "./components/product.jsx";
-import { ShippingAddress } from "./components/shippingAddress.jsx";
+import { ShippingAddress } from "./components/ShippingAddress.jsx";
 import { useState, useMemo } from "react";
 import { CartSummary } from "./components/CartSummary.jsx";
 

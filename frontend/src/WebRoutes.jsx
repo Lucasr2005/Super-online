@@ -9,6 +9,7 @@ import Cart from "./pages/cart/cart.jsx";
 import Register from "./pages/register/register.jsx";
 import Login from "./pages/register/login.jsx";
 import { Success } from "./pages/paymentStatus/success.jsx";
+import { Failure } from "./pages/paymentStatus/failure.jsx";
 
 function WebRoutes() {
   const dispatch = useDispatch();
@@ -45,6 +46,10 @@ function WebRoutes() {
         <Route
           path="/pago/exitoso"
           element={<Success />}
+        />
+        <Route
+          path="/pago/rechazado"
+          element={<Failure />}
         />
       </Routes>
     </BrowserRouter>

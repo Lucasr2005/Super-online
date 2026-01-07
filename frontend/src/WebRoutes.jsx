@@ -1,4 +1,4 @@
-import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getProducts } from "./services/products.js";
@@ -11,6 +11,7 @@ import Login from "./pages/register/login.jsx";
 import { Success } from "./pages/paymentStatus/success.jsx";
 import { Failure } from "./pages/paymentStatus/failure.jsx";
 import { verifyToken } from "./services/users.js";
+import { OnlyLogguedInRoutes } from "./middleware/OnlyLogguedInRoutes.jsx";
 
 function WebRoutes() {
   const dispatch = useDispatch();
@@ -47,18 +48,20 @@ function WebRoutes() {
           path="/productos/:category"
           element={<Products />}
         />
-        <Route
-          path="/carrito"
-          element={<Cart />}
-        />
-        <Route
-          path="/pago/exitoso"
-          element={<Success />}
-        />
-        <Route
-          path="/pago/rechazado"
-          element={<Failure />}
-        />
+        <Route element={<OnlyLogguedInRoutes />}>
+          <Route
+            path="/carrito"
+            element={<Cart />}
+          />
+          <Route
+            path="/pago/exitoso"
+            element={<Success />}
+          />
+          <Route
+            path="/pago/rechazado"
+            element={<Failure />}
+          />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

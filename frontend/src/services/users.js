@@ -28,6 +28,6 @@ export const verifyToken = async () => {
         return response.data;
     } catch (error) {
         console.error(error);
-        return false;
+        throw new Error(error.response?.data?.message || "Ocurrió un error al verificar el token.");
     }
 }

@@ -21,3 +21,13 @@ export const loginUser = async (user) => {
         throw new Error(error.response?.data?.message || "Ocurrió un error al logear el usuario.");
     }
 }
+
+export const verifyToken = async () => {
+    try {
+        const response = await axios.get(`${URL_BASE}/verify`, { withCredentials: true });
+        return response.data;
+    } catch (error) {
+        console.error(error);
+        return false;
+    }
+}

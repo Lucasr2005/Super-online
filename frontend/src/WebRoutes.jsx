@@ -1,4 +1,4 @@
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getProducts } from "./services/products.js";
@@ -10,6 +10,7 @@ import Register from "./pages/register/register.jsx";
 import Login from "./pages/register/login.jsx";
 import { Success } from "./pages/paymentStatus/success.jsx";
 import { Failure } from "./pages/paymentStatus/failure.jsx";
+import { verifyToken } from "./services/users.js";
 
 function WebRoutes() {
   const dispatch = useDispatch();
@@ -18,6 +19,13 @@ function WebRoutes() {
     getProducts().then((allProducts) => {
       dispatch(fetchProducts(allProducts));
     });
+    verifyToken()
+      .then(() => {
+        dispatch({ type: "@user/setUser" });
+      })
+      .catch(() => {
+        dispatch({ type: "@user/setInvalid" });
+      });
   }, [dispatch]);
 
   return (

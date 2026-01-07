@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { InputField } from "./components/inputField.jsx";
 import { registerUser } from "../../services/users.js";
-const handleSubmit = (e, formData, setError) => {
+import { useDispatch } from "react-redux";
+const handleSubmit = (e, formData, setError, dispatch, navigate) => {
   e.preventDefault();
   if (formData.password !== formData.password_confirm) {
     alert("Las contraseñas no coinciden.");
@@ -10,7 +11,8 @@ const handleSubmit = (e, formData, setError) => {
   }
   registerUser(formData)
     .then((response) => {
-      console.log(response);
+      dispatch({ type: "@user/setUser" });
+      navigate("/");
     })
     .catch((err) => {
       setError(err);
@@ -36,12 +38,14 @@ function Register() {
       [name]: value,
     }));
   };
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   return (
     <section className="flex justify-center items-center h-screen">
       <form
         className="flex flex-col w-80 gap-5 px-3"
-        onSubmit={(e) => handleSubmit(e, formData, setError)}
+        onSubmit={(e) => handleSubmit(e, formData, setError, dispatch, navigate)}
       >
         <h2 className="text-2xl font-semibold">Registrarse</h2>
         <p className="text-red-600 min-h-[1.5rem]">{error ? error.message : ""}</p>

@@ -24,10 +24,9 @@ export const loginUser = async (user) => {
 
 export const verifyToken = async () => {
     try {
-        const response = await axios.get(`${URL_BASE}/verify`, { withCredentials: true });
+        const response = await axios.get(`${URL_BASE}/verifyToken`, { withCredentials: true });
         return response.data;
     } catch (error) {
-        console.error(error);
         throw new Error(error.response?.data?.message || "Ocurrió un error al verificar el token.");
     }
 }

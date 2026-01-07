@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams, useLocation } from "react-router-dom";
 import { InputField } from "./components/inputField.jsx";
 import { loginUser } from "../../services/users.js";
 import { useDispatch } from "react-redux";
@@ -10,12 +10,23 @@ const handleSubmit = (e, formData, setError, redirect, dispatch, navigate) => {
   loginUser(formData)
     .then((response) => {
       dispatch({ type: "@user/setUser" });
+      console.log(redirect);
       navigate(redirect);
     })
     .catch((err) => {
       setError(err);
       setTimeout(() => setError(null), 5000);
     });
+};
+
+const getFullRedirectPath = () => {
+  const search = location.search;
+  const parts = search.split("?redirect=");
+
+  if (parts.length > 1) {
+    return decodeURIComponent(parts[1]) || "/";
+  }
+  return searchParams.get("redirect") || "/";
 };
 
 function Login() {
@@ -25,8 +36,8 @@ function Login() {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
-  const [searchParams] = useSearchParams();
-  const redirect = searchParams.get("redirect") || "/";
+
+  const redirect = getFullRedirectPath();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

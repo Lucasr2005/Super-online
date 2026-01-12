@@ -1,5 +1,12 @@
+import { Categories } from "./components/categories.jsx";
+import { Hero } from "./components/hero.jsx";
 function Home() {
-  return <h1>Super online</h1>;
+  return (
+    <>
+      <Hero />
+      <Categories />
+    </>
+  );
 }
 
 export default Home;

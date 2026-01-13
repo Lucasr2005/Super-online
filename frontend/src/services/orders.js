@@ -26,3 +26,19 @@ export async function createMPOrder(cart, shippingPrice) {
         throw new Error(error.response?.data || "Ocurrió un error al crear la orden.");
     }
 }
+
+export async function createOrder(cart, shippingPrice, address) {
+    const completeAddress = {
+        ...address,
+        state: "Buenos Aires",
+        country: "Argentina"
+    };
+    try {
+        const response = await axios.post(URL_BASE + "/createOrder", { cart, shippingPrice, address: completeAddress }, { withCredentials: true });
+        return response.data;
+    } catch (error) {
+        console.error(error);
+        console.log(error.response?.data);
+        throw new Error(error.response?.data || "Ocurrió un error al crear la orden.");
+    }
+}

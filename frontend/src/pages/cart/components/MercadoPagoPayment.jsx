@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
-import { createMPOrder } from "../../../services/orders.js";
+import { createMPOrder, createOrder } from "../../../services/orders.js";
 
 initMercadoPago(import.meta.env.VITE_MERCADO_PAGO_PUBLIC_KEY, { locale: "es-AR" });
 
-export function MercadoPagoPayment({ shippingPrice }) {
+export function MercadoPagoPayment({ shippingPrice, address }) {
   const [preferenceId, setPreferenceId] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -34,7 +34,10 @@ export function MercadoPagoPayment({ shippingPrice }) {
   }
 
   return (
-    <div className="mt-4">
+    <div
+      className="mt-4"
+      onClick={() => createOrder(cart, shippingPrice, address)}
+    >
       {isLoading && <p className="text-sm text-gray-600">Generando botón de pago...</p>}
       {preferenceId && !isLoading && <Wallet initialization={{ preferenceId }} />}
       {error && <p className="text-red-600 mt-2">{error.message}</p>}

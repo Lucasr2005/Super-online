@@ -42,7 +42,10 @@ export function CartSummary({ total, address }) {
           {isLoading ? "Calculando..." : "Calcular envío"}
         </button>
       )}
-      <MercadoPagoPayment shippingPrice={shippingPrice} />
+      <MercadoPagoPayment
+        shippingPrice={shippingPrice}
+        address={address}
+      />
       {error && <p className="text-red-600 mt-2">{error.message}</p>}
     </section>
   );

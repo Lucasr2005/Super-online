@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-export function ShippingAddressForm({ address, onSave, onClose }) {
-  const [formData, setFormData] = useState(address || {});
-
+export function ShippingAddressForm({ onClose }) {
+  const [formData, setFormData] = useState(useSelector((state) => state.delivery.address));
+  const dispatch = useDispatch();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -14,7 +15,7 @@ export function ShippingAddressForm({ address, onSave, onClose }) {
       window.alert("Debes seleccionar un tipo de vivienda");
       return;
     }
-    onSave(formData);
+    dispatch({ type: "@delivery/setAddress", payload: formData });
     onClose();
   };
 

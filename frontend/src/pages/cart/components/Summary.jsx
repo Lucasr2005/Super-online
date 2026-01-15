@@ -1,9 +1,12 @@
-export function Summary({ total, shippingPrice }) {
+import { useSelector } from "react-redux";
+
+export function Summary({ subtotal }) {
+  const { shippingPrice } = useSelector((state) => state.delivery);
   return (
     <>
       <div className="flex items-center justify-between">
         <span className="text-sm">Subtotal</span>
-        <span className="font-semibold">${total}</span>
+        <span className="font-semibold">${subtotal}</span>
       </div>
       <div className="flex items-center justify-between">
         <span className="text-sm">Envio</span>
@@ -11,7 +14,7 @@ export function Summary({ total, shippingPrice }) {
       </div>
       <div className="flex items-center justify-between">
         <span className="text-sm">Total</span>
-        <span className="font-semibold">${(total + shippingPrice).toFixed(2)}</span>
+        <span className="font-semibold">${(shippingPrice + subtotal).toFixed(2)}</span>
       </div>
     </>
   );

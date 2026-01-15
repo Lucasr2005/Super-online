@@ -4,15 +4,17 @@ import "./index.css";
 import WebRoutes from "./WebRoutes.jsx";
 import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
-import { productsReducer } from "./reducers/products/products.reducer.js";
-import { filtersReducer } from "./reducers/products/filters.reducer.js";
-import { cartReducer } from "./reducers/products/cart.reducer.js";
-import { userReducer } from "./reducers/products/user.reducer.js";
+import { productsReducer } from "./reducers/products.reducer.js";
+import { filtersReducer } from "./reducers/filters.reducer.js";
+import { cartReducer } from "./reducers/cart.reducer.js";
+import { userReducer } from "./reducers/user.reducer.js";
+import { deliveryReducer } from "./reducers/delivery.reducer.js";
 const reducers = combineReducers({
   products: productsReducer,
   filters: filtersReducer,
   cart: cartReducer,
   user: userReducer,
+  delivery: deliveryReducer,
 });
 const store = createStore(reducers);
 

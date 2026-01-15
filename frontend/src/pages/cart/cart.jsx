@@ -1,13 +1,12 @@
 import { useSelector } from "react-redux";
 import { Product } from "./components/product.jsx";
 import { ShippingAddress } from "./components/ShippingAddress.jsx";
-import { useState, useMemo } from "react";
+import { useMemo } from "react";
 import { CartSummary } from "./components/CartSummary.jsx";
 
 function Cart() {
   const products = useSelector((state) => state.products);
   const cart = useSelector((state) => state.cart);
-  const [address, setAddress] = useState({});
 
   const cartSummary = useMemo(() => {
     if (!cart || !products) return 0;
@@ -44,15 +43,9 @@ function Cart() {
           })}
       </section>
 
-      <ShippingAddress
-        address={address}
-        setAddress={setAddress}
-      />
+      <ShippingAddress />
 
-      <CartSummary
-        address={address}
-        total={cartSummary}
-      />
+      <CartSummary subtotal={cartSummary} />
     </div>
   );
 }

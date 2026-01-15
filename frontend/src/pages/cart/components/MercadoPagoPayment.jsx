@@ -5,11 +5,13 @@ import { createMPOrder, createOrder } from "../../../services/orders.js";
 
 initMercadoPago(import.meta.env.VITE_MERCADO_PAGO_PUBLIC_KEY, { locale: "es-AR" });
 
-export function MercadoPagoPayment({ shippingPrice, address }) {
+export function MercadoPagoPayment() {
   const [preferenceId, setPreferenceId] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+
   const cart = useSelector((state) => state.cart);
+  const { shippingPrice, address } = useSelector((state) => state.delivery);
 
   useEffect(() => {
     if (shippingPrice > 0 && cart.length > 0) {

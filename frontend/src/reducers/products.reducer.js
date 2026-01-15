@@ -1,4 +1,4 @@
-import { getProducts } from "../../services/products";
+import { getProducts } from "../services/products";
 
 const initialState = await getProducts();
 export const productsReducer = (state = initialState, action) => {

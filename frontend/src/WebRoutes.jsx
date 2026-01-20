@@ -12,6 +12,7 @@ import { Success } from "./pages/paymentStatus/success.jsx";
 import { Failure } from "./pages/paymentStatus/failure.jsx";
 import { verifyToken } from "./services/users.js";
 import { OnlyLogguedInRoutes } from "./middleware/OnlyLogguedInRoutes.jsx";
+import Checkout from "./pages/checkout/checkout.jsx";
 
 function WebRoutes() {
   const dispatch = useDispatch();
@@ -52,6 +53,10 @@ function WebRoutes() {
           <Route
             path="/carrito"
             element={<Cart />}
+          />
+          <Route
+            path="/pago"
+            element={<Checkout />}
           />
           <Route
             path="/pago/exitoso"

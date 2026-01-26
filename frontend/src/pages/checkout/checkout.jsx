@@ -3,6 +3,7 @@ import { Products } from "./components/products.jsx";
 import { MercadoPagoPayment } from "./components/mercadoPago/MercadoPagoPayment.jsx";
 
 function Checkout() {
+  const orderId = new URLSearchParams(window.location.search).get("orderId");
   return (
     <>
       <h2 className=" text-2xl font-semibold my-5 w-full text-center">Finalizar compra</h2>
@@ -13,7 +14,7 @@ function Checkout() {
           <Products />
           <hr className="opacity-50 my-4" />
           <Summary />
-          <MercadoPagoPayment />
+          <MercadoPagoPayment orderId={orderId} />
         </section>
       </section>
     </>

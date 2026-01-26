@@ -5,7 +5,7 @@ import { useMercadoPagoPreference } from "./useMercadoPagoPreference.js";
 
 initMercadoPago(import.meta.env.VITE_MERCADO_PAGO_PUBLIC_KEY, { locale: "es-AR" });
 
-export function MercadoPagoPayment() {
+export function MercadoPagoPayment({ orderId }) {
   const cart = useSelector((state) => state.cart);
   const { shippingPrice, address, isAddressSet } = useSelector((state) => state.delivery);
 
@@ -13,6 +13,7 @@ export function MercadoPagoPayment() {
     cart,
     shippingPrice,
     isAddressSet,
+    orderId,
   });
 
   const handlePaymentSubmit = () => {

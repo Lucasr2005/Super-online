@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { createMPOrder } from "../../../../services/orders.js";
 
-export function useMercadoPagoPreference({ cart, shippingPrice, isAddressSet }) {
+export function useMercadoPagoPreference({ cart, shippingPrice, isAddressSet, orderId }) {
     const [preferenceId, setPreferenceId] = useState(null);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -12,7 +12,7 @@ export function useMercadoPagoPreference({ cart, shippingPrice, isAddressSet }) 
             setError(null);
             setPreferenceId(null);
 
-            createMPOrder(cart, shippingPrice)
+            createMPOrder(cart, shippingPrice, orderId)
                 .then((response) => {
                     if (response?.preference_id) {
                         setPreferenceId(response.preference_id);

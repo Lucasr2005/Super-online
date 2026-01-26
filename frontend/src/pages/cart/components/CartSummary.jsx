@@ -1,10 +1,9 @@
 import { getShippingPrice } from "../../../services/orders.js";
 import { useState } from "react";
 import { Summary } from "../../components/Summary.jsx";
-import { MercadoPagoPayment } from "./MercadoPagoPayment.jsx";
 import { useDispatch, useSelector } from "react-redux";
 
-export function CartSummary({ subtotal }) {
+export function CartSummary() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -26,7 +25,7 @@ export function CartSummary({ subtotal }) {
   return (
     <section className="mx-5 flex-col my-5 bg-[#FFFFFF] rounded-md shadow-[0px_4px_8px_0px_rgba(0,_0,_0,_0.1)] p-3 gap-5 py-4 mb-20">
       <h2 className="text-xl font-semibold mb-2">Resumen de compra</h2>
-      <Summary subtotal={subtotal} />
+      <Summary />
 
       {isAddressSet && shippingPrice == 0 && (
         <button
@@ -37,7 +36,6 @@ export function CartSummary({ subtotal }) {
           {isLoading ? "Calculando..." : "Calcular envío"}
         </button>
       )}
-      <MercadoPagoPayment />
       {error && <p className="text-red-600 mt-2">{error.message}</p>}
     </section>
   );

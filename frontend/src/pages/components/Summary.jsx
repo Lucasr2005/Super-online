@@ -1,7 +1,16 @@
 import { useSelector } from "react-redux";
 
-export function Summary({ subtotal }) {
+export function Summary() {
+  const cart = useSelector((state) => state.cart);
+  const products = useSelector((state) => state.products);
+
+  const subtotal = cart.reduce((total, cartItem) => {
+    const product = products.find((p) => p.id === cartItem.id);
+    if (!product) return total;
+    return total + product.price * cartItem.quantity;
+  }, 0);
   const { shippingPrice } = useSelector((state) => state.delivery);
+
   return (
     <section className="flex flex-col gap-2 text-sm text-gray-800 ">
       <div className="flex items-center justify-between">

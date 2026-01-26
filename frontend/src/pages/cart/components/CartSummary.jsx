@@ -1,6 +1,6 @@
 import { getShippingPrice } from "../../../services/orders.js";
 import { useState } from "react";
-import { Summary } from "./Summary";
+import { Summary } from "../../components/Summary.jsx";
 import { MercadoPagoPayment } from "./MercadoPagoPayment.jsx";
 import { useDispatch, useSelector } from "react-redux";
 

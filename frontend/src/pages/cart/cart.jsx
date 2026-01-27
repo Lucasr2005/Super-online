@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import { Product } from "./components/product.jsx";
 import { ShippingAddress } from "./components/ShippingAddress.jsx";
-import { useMemo } from "react";
 import { CartSummary } from "./components/CartSummary.jsx";
 
 function Cart() {

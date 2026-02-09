@@ -1,24 +1,11 @@
 import { useSelector } from "react-redux";
 import { Product } from "./components/product.jsx";
 import { ShippingAddress } from "./components/ShippingAddress.jsx";
-import { useMemo } from "react";
 import { CartSummary } from "./components/CartSummary.jsx";
 
 function Cart() {
   const products = useSelector((state) => state.products);
   const cart = useSelector((state) => state.cart);
-
-  const cartSummary = useMemo(() => {
-    if (!cart || !products) return 0;
-
-    const rawTotal = cart.reduce((total, cartItem) => {
-      const product = products.find((p) => p.id === cartItem.id);
-      if (!product) return total;
-      return total + product.price * cartItem.quantity;
-    }, 0);
-
-    return Math.round(rawTotal * 100) / 100;
-  }, [cart, products]);
 
   return (
     <div className="">
@@ -45,7 +32,7 @@ function Cart() {
 
       <ShippingAddress />
 
-      <CartSummary subtotal={cartSummary} />
+      <CartSummary />
     </div>
   );
 }

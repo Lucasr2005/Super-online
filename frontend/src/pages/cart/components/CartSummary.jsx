@@ -1,14 +1,15 @@
-import { getShippingPrice } from "../../../services/orders.js";
+import { createOrder, getShippingPrice } from "../../../services/orders.js";
 import { useState } from "react";
-import { Summary } from "./Summary";
-import { MercadoPagoPayment } from "./MercadoPagoPayment.jsx";
+import { Summary } from "../../components/Summary.jsx";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-export function CartSummary({ subtotal }) {
+export function CartSummary() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const { address, isAddressSet, shippingPrice } = useSelector((state) => state.delivery);
+  const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const handleGetShippingCost = async () => {
     setIsLoading(true);
@@ -22,11 +23,21 @@ export function CartSummary({ subtotal }) {
       setIsLoading(false);
     }
   };
+  const navigate = useNavigate();
+  const handleCreateOrder = async () => {
+    try {
+      const response = await createOrder(cart, shippingPrice, address);
+      navigate(`/pago?orderId=${response.orderId}`);
+    } catch (err) {
+      console.error(err);
+      setError(err);
+    }
+  };
 
   return (
     <section className="mx-5 flex-col my-5 bg-[#FFFFFF] rounded-md shadow-[0px_4px_8px_0px_rgba(0,_0,_0,_0.1)] p-3 gap-5 py-4 mb-20">
       <h2 className="text-xl font-semibold mb-2">Resumen de compra</h2>
-      <Summary subtotal={subtotal} />
+      <Summary />
 
       {isAddressSet && shippingPrice == 0 && (
         <button
@@ -37,7 +48,14 @@ export function CartSummary({ subtotal }) {
           {isLoading ? "Calculando..." : "Calcular envío"}
         </button>
       )}
-      <MercadoPagoPayment />
+      {isAddressSet && shippingPrice > 0 && (
+        <button
+          onClick={handleCreateOrder}
+          className="bg-blue-600 text-white flex flex-1 items-center justify-center py-2 opacity-85 w-full rounded-lg mt-3 disabled:opacity-50"
+        >
+          Confirmar orden
+        </button>
+      )}
       {error && <p className="text-red-600 mt-2">{error.message}</p>}
     </section>
   );

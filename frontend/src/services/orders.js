@@ -17,9 +17,9 @@ export async function getShippingPrice(address) {
     }
 }
 
-export async function createMPOrder(cart, shippingPrice) {
+export async function createMPOrder(cart, shippingPrice, orderId) {
     try {
-        const response = await axios.post(URL_BASE + "/mercadoPago", { cart, shippingPrice });
+        const response = await axios.post(URL_BASE + "/mercadoPago", { cart, shippingPrice, orderId }, { withCredentials: true });
         return response.data;
     } catch (error) {
         console.error(error);

@@ -1,5 +1,8 @@
 import express from "express"
-import { createMPOrder, createOrder, getShippingPrice, receiveWebhook } from "../controllers/orders.functions.js";
+import { createMPOrder } from "../controllers/orders/mercadoPago/createMPOrder.js"
+import { createOrder } from "../controllers/orders/createOrderInDB.js"
+import { getShippingPrice } from "../controllers/orders/ShippingPrice.js"
+import { receiveWebhook } from "../controllers/orders/mercadoPago/notificationWebHook.js"
 
 const router = express.Router()
 

@@ -1,5 +1,5 @@
 import express from "express"
-import { createMPOrder, createOrder, getShippingPrice } from "../controllers/orders.functions.js";
+import { createMPOrder, createOrder, getShippingPrice, receiveWebhook } from "../controllers/orders.functions.js";
 
 const router = express.Router()
 
@@ -12,5 +12,6 @@ router.post("/shippingPrice", getShippingPrice)
 
 router.post("/mercadoPago", createMPOrder)
 
-export default router
+router.post("/mercadoPago/checkout", receiveWebhook);
 
+export default router

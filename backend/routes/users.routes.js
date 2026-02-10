@@ -1,5 +1,7 @@
 import express from "express"
-import { register, login, verifyToken } from "../controllers/users.functions.js"
+import { register } from "../controllers/users/register.js"
+import { login } from "../controllers/users/login.js"
+import { verifyToken } from "../controllers/users/verifyToken.js"
 const router = express.Router()
 
 router.post("/register", register)

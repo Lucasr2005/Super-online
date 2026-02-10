@@ -81,9 +81,9 @@ const setItems = (products, cart, shippingPrice) => {
 }
 
 export async function createMPOrder(req, res) {
-    const { cart, shippingPrice } = req.body;
-    if (!cart || !Array.isArray(cart) || cart.length === 0 || !shippingPrice) {
-        return res.status(400).json({ message: "El carrito está vacío o no es válido." });
+    const { cart, shippingPrice, orderId } = req.body;
+    if (!cart || !Array.isArray(cart) || cart.length === 0 || !shippingPrice || !orderId) {
+        return res.status(400).json({ message: "El carrito está vacío, no es válido o falta el ID de la orden." });
     }
     const ids = cart.map(item => item.id);
     try {
@@ -108,6 +108,7 @@ export async function createMPOrder(req, res) {
                     pending: process.env.MP_PENDING
                 },
                 auto_return: "approved",
+                external_reference: orderId,
             }
         });
         if (!resultMP) {

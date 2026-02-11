@@ -13,6 +13,7 @@ import { Failure } from "./pages/paymentStatus/failure.jsx";
 import { verifyToken } from "./services/users.js";
 import { OnlyLogguedInRoutes } from "./middleware/OnlyLogguedInRoutes.jsx";
 import Checkout from "./pages/checkout/checkout.jsx";
+import { Header } from "./pages/components/header.jsx";
 
 function WebRoutes() {
   const dispatch = useDispatch();
@@ -32,11 +33,8 @@ function WebRoutes() {
 
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
-        <Route
-          path="/"
-          element={<Home />}
-        />
         <Route
           path="/registro"
           element={<Register />}
@@ -44,6 +42,11 @@ function WebRoutes() {
         <Route
           path="/login"
           element={<Login />}
+        />
+
+        <Route
+          path="/"
+          element={<Home />}
         />
         <Route
           path="/productos/:category"

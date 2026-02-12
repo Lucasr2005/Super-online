@@ -14,7 +14,7 @@ import { verifyToken } from "./services/users.js";
 import { OnlyLogguedInRoutes } from "./middleware/OnlyLogguedInRoutes.jsx";
 import Checkout from "./pages/checkout/checkout.jsx";
 import { Header } from "./components/layout/header.jsx";
-import { SideBar } from "./components/layout/sideBar.jsx";
+import { SideBar } from "./components/layout/sidebar.jsx";
 
 function WebRoutes() {
   const dispatch = useDispatch();

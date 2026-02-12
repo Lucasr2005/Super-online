@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import cartImg from "../../assets/images/cart.png";
 import menuImg from "../../assets/images/menu.png";
-import { handleSetSidebar } from "./functions/setSidebar.jsx";
+import { handleSetSidebar } from "./functions/setSidebar.js";
 import { useDispatch } from "react-redux";
 
 export function Header() {

@@ -42,6 +42,7 @@ export function SideBar() {
           <Link
             to="/"
             className="text-xl font-semibold text-blue-800"
+            onClick={() => handleSetSidebar({ dispatch })}
           >
             Súper Online
           </Link>
@@ -59,6 +60,7 @@ export function SideBar() {
                 {categories.map((category) => (
                   <li key={category}>
                     <Link
+                      onClick={() => handleSetSidebar({ dispatch })}
                       to={`/productos/${category}`}
                       className="block p-2 rounded-md font-medium hover:bg-gray-100"
                     >
@@ -76,6 +78,7 @@ export function SideBar() {
                 <Link
                   to="/carrito"
                   className="block p-2 rounded-md hover:bg-gray-100"
+                  onClick={() => handleSetSidebar({ dispatch })}
                 >
                   Carrito
                 </Link>
@@ -84,6 +87,7 @@ export function SideBar() {
                 <Link
                   to="/mis-pedidos"
                   className="block p-2 rounded-md hover:bg-gray-100"
+                  onClick={() => handleSetSidebar({ dispatch })}
                 >
                   Mis Pedidos
                 </Link>
@@ -94,7 +98,9 @@ export function SideBar() {
         {isLogged && (
           <div
             className="w-full flex justify-center items-center gap-2 py-4"
-            onClick={handleLogout}
+            onClick={() => {
+              (handleLogout(), handleSetSidebar({ dispatch }));
+            }}
           >
             <img
               src={logoutImg}

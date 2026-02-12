@@ -14,6 +14,7 @@ import { verifyToken } from "./services/users.js";
 import { OnlyLogguedInRoutes } from "./middleware/OnlyLogguedInRoutes.jsx";
 import Checkout from "./pages/checkout/checkout.jsx";
 import { Header } from "./pages/components/header.jsx";
+import { SideBar } from "./pages/components/sideBar.jsx";
 
 function WebRoutes() {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ function WebRoutes() {
   return (
     <BrowserRouter>
       <Header />
+      <SideBar />
       <Routes>
         <Route
           path="/registro"

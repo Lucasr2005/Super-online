@@ -2,9 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import logoutImg from "../../assets/images/logout.png";
+import { handleSetSidebar } from "./functions/setSidebar.jsx";
 
 export function SideBar() {
-  const [displaySideBar, setDisplaySideBar] = useState(true);
+  const { displaySideBar } = useSelector((state) => state.layout);
   useEffect(() => {
     if (displaySideBar) {
       document.body.style.overflow = "hidden";
@@ -12,6 +13,7 @@ export function SideBar() {
       document.body.style.overflow = "auto";
     }
   }, [displaySideBar]);
+
   const [displayCategories, setDisplayCategories] = useState(false);
   const { isLogged } = useSelector((state) => state.user);
   const products = useSelector((state) => state.products);
@@ -32,7 +34,7 @@ export function SideBar() {
     <div className="fixed inset-0 z-50 flex">
       <div
         className="fixed inset-0 bg-black/50"
-        onClick={() => setDisplaySideBar(false)}
+        onClick={() => handleSetSidebar({ dispatch })}
       ></div>
 
       <aside className="relative z-10 w-4/5 max-w-xs bg-white h-full shadow-xl flex flex-col">

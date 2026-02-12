@@ -13,8 +13,8 @@ import { Failure } from "./pages/paymentStatus/failure.jsx";
 import { verifyToken } from "./services/users.js";
 import { OnlyLogguedInRoutes } from "./middleware/OnlyLogguedInRoutes.jsx";
 import Checkout from "./pages/checkout/checkout.jsx";
-import { Header } from "./pages/components/header.jsx";
-import { SideBar } from "./pages/components/sideBar.jsx";
+import { Header } from "./components/layout/header.jsx";
+import { SideBar } from "./components/layout/sideBar.jsx";
 
 function WebRoutes() {
   const dispatch = useDispatch();

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import logoutImg from "../images/logout.png";
+import logoutImg from "../../assets/images/logout.png";
 
 export function SideBar() {
   const [displaySideBar, setDisplaySideBar] = useState(true);

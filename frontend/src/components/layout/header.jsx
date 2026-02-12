@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import cartImg from "../images/cart.png";
-import menuImg from "../images/menu.png";
+import cartImg from "../../assets/images/cart.png";
+import menuImg from "../../assets/images/menu.png";
 export function Header() {
   return (
     <header className="flex items-center py-4 shadow-[0_4px_4px_rgba(0,0,0,0.1)] h-16 sticky top-0 z-50 mt-0 w-full bg-[#fafafa]">

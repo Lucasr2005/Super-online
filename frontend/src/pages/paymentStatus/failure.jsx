@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import failureImg from "../images/failure.png";
+import failureImg from "../../assets/images/failure.png";
 
 export function Failure() {
   const [searchParams] = useSearchParams();

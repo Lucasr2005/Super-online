@@ -9,12 +9,14 @@ import { filtersReducer } from "./reducers/filters.reducer.js";
 import { cartReducer } from "./reducers/cart.reducer.js";
 import { userReducer } from "./reducers/user.reducer.js";
 import { deliveryReducer } from "./reducers/delivery.reducer.js";
+import { layoutReducer } from "./reducers/layout.reducer.js";
 const reducers = combineReducers({
   products: productsReducer,
   filters: filtersReducer,
   cart: cartReducer,
   user: userReducer,
   delivery: deliveryReducer,
+  layout: layoutReducer,
 });
 const store = createStore(reducers);
 
@@ -23,5 +25,5 @@ createRoot(document.getElementById("root")).render(
     <Provider store={store}>
       <WebRoutes />
     </Provider>
-  </StrictMode>
+  </StrictMode>,
 );

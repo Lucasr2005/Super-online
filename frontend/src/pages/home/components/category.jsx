@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { normalizeString } from "../../functions/normalizeString";
+import { normalizeString } from "../../../functions/normalizeString.js";
 
 export function Category({ category, count, icon: Icon }) {
   return (

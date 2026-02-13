@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { displayProducts } from "./functions/display.products.jsx";
-import { normalizeString } from "../functions/normalizeString.js";
+import { normalizeString } from "../../functions/normalizeString.js";
 import { FiltersMenu } from "./components/FiltersMenu.jsx";
 import { HeaderButtons } from "./components/HeaderButtons.jsx";
 import { useSelector } from "react-redux";
@@ -15,7 +15,7 @@ function Products() {
 
   const filteredProducts = useMemo(() => {
     const productsByCategory = allProducts.filter(
-      (p) => normalizeString(p.category) === normalizeString(urlCategory)
+      (p) => normalizeString(p.category) === normalizeString(urlCategory),
     );
 
     const withSubCategory =

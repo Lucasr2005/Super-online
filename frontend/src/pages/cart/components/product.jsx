@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { DisplayQuantity } from "../../components/displayQuantity";
+import { DisplayQuantity } from "../../../components/displayQuantity";
 
 export function Product({ id, image_url, name, price, quantity }) {
   const dispatch = useDispatch();

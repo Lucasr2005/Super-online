@@ -1,6 +1,6 @@
 import { createOrder, getShippingPrice } from "../../../services/orders.js";
 import { useState } from "react";
-import { Summary } from "../../components/Summary.jsx";
+import { Summary } from "../../../components/Summary.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 

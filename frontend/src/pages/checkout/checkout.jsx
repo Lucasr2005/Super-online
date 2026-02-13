@@ -1,4 +1,4 @@
-import { Summary } from "../components/Summary.jsx";
+import { Summary } from "../../components/Summary.jsx";
 import { Products } from "./components/products.jsx";
 import { MercadoPagoPayment } from "./components/mercadoPago/MercadoPagoPayment.jsx";
 import { useSelector } from "react-redux";

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { DisplayQuantity } from "../../components/displayQuantity.jsx";
+import { DisplayQuantity } from "../../../components/displayQuantity.jsx";
 const addProduct = (id, dispatch) => {
   if (id) {
     dispatch({ type: "@cart/addProduct", payload: { id } });

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { handleSetSidebar } from "./functions/setSidebar.js";
+import { normalizeString } from "../../functions/normalizeString.js";
 
 export function ShowCategories({ displayCategories }) {
   const products = useSelector((state) => state.products);
@@ -18,10 +19,10 @@ export function ShowCategories({ displayCategories }) {
   return (
     <ul className="flex flex-col  font-semibold ml-4">
       {categories.map((category) => (
-        <li key={category}>
+        <li key={normalizeString(category)}>
           <Link
             onClick={() => handleSetSidebar({ dispatch })}
-            to={`/productos/${category}`}
+            to={`/productos/${normalizeString(category)}`}
             className="block p-2 rounded-md font-medium hover:bg-gray-100"
           >
             {category}

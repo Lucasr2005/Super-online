@@ -5,6 +5,8 @@ import { normalizeString } from "../../functions/normalizeString.js";
 import { FiltersMenu } from "./components/FiltersMenu.jsx";
 import { HeaderButtons } from "./components/HeaderButtons.jsx";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 function Products() {
   const { category: urlCategory } = useParams();
@@ -12,6 +14,13 @@ function Products() {
   const displayFilters = useSelector((state) => state.filters.display);
   const allProducts = useSelector((state) => state.products);
   const filters = useSelector((state) => state.filters);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (urlCategory) {
+      dispatch({ type: "@filters/setCategory", payload: { category: urlCategory } });
+    }
+  }, [urlCategory, dispatch]);
 
   const filteredProducts = useMemo(() => {
     const productsByCategory = allProducts.filter(

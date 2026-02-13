@@ -16,7 +16,7 @@ export const filtersReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case "@filters/setCategory": {
-            return { ...state, category: action.payload };
+            return { ...initialState, category: action.payload };
         }
 
         case "@filters/setSubCategory": {

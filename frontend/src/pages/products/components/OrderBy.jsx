@@ -1,11 +1,12 @@
 import { OrderByOption } from "./OrderByOption";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export function OrderBy() {
   const dispatch = useDispatch();
   const handleChangeOption = (e) => {
     dispatch({ type: "@filters/setOrderBy", payload: e.target.value });
   };
+  const { orderBy } = useSelector((state) => state.filters);
   return (
     <div className="ml-2 mt-4 ">
       <h3 className="text-lg font-semibold ">Ordenar por</h3>
@@ -16,24 +17,28 @@ export function OrderBy() {
             name="order"
             value="priceAsc"
             onChange={handleChangeOption}
+            orderBy={orderBy}
           />
           <OrderByOption
             label="Precio descendente"
             name="order"
             value="priceDesc"
             onChange={handleChangeOption}
+            orderBy={orderBy}
           />
           <OrderByOption
             label="Nombre ascendente"
             name="order"
-            value="NameAsc"
+            value="nameAsc"
             onChange={handleChangeOption}
+            orderBy={orderBy}
           />
           <OrderByOption
             label="Nombre descendente"
             name="order"
-            value="NameDesc"
+            value="nameDesc"
             onChange={handleChangeOption}
+            orderBy={orderBy}
           />
         </form>
       </section>

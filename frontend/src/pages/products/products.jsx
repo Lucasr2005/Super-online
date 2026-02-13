@@ -7,6 +7,7 @@ import { HeaderButtons } from "./components/HeaderButtons.jsx";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { orderBy } from "./functions/orderBy.js";
 
 function Products() {
   const { category: urlCategory } = useParams();
@@ -37,7 +38,7 @@ function Products() {
         ? withSubCategory.filter((p) => filters.brand.includes(p.brand))
         : withSubCategory;
 
-    return withBrand;
+    return orderBy(withBrand, filters.orderBy);
   }, [allProducts, urlCategory, filters]);
 
   const productsForMenu = useMemo(() => {

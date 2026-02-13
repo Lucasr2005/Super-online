@@ -1,4 +1,4 @@
-export function OrderByOption({ label, name, value, onChange }) {
+export function OrderByOption({ label, name, value, onChange, orderBy }) {
   return (
     <div className="flex items-center gap-2 py-1">
       <input
@@ -9,6 +9,7 @@ export function OrderByOption({ label, name, value, onChange }) {
         onChange={onChange}
         required
         className="h-4 aspect-square"
+        checked={orderBy === value}
       />
       <label htmlFor={value}>{label}</label>
     </div>

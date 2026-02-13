@@ -18,7 +18,11 @@ export const userReducer = (state = initialState, action) => {
                 isValidated: true,
             };
         case "@user/logoutUser":
-            return initialState
+            return {
+                ...state,
+                isLogged: false,
+                isValidated: true,
+            };
         default:
             return state;
     }

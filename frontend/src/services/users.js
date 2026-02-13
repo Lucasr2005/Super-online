@@ -30,3 +30,14 @@ export const verifyToken = async () => {
         throw new Error(error.response?.data?.message || "Ocurrió un error al verificar el token.");
     }
 }
+
+export const logout = async () => {
+    try {
+        const response = await axios.get(`${URL_BASE}/logout`, { withCredentials: true });
+        console.log(response.data);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+        throw new Error(error.response?.data?.message || "Ocurrió un error al cerrar sesión.");
+    }
+}

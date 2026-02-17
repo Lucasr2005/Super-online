@@ -9,7 +9,7 @@ const STATE_LABELS = {
   rejected: "Rechazado",
 };
 
-export function Order({ order }) {
+export function Order({ order, setSelectedOrder }) {
   const formattedDate = new Intl.DateTimeFormat("es-ES", {
     year: "numeric",
     month: "long",
@@ -36,7 +36,10 @@ export function Order({ order }) {
         <p className="text-sm opacity-75">{formattedDate}</p>
       </div>
       <div className="w-full flex justify-end">
-        <button className="bg-blue-600  text-white  px-2 py-1 rounded-sm text-sm">
+        <button
+          className="bg-blue-600  text-white  px-2 py-1 rounded-sm text-sm"
+          onClick={() => setSelectedOrder(order)}
+        >
           Ver detalles
         </button>
       </div>

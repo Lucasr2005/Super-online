@@ -44,7 +44,6 @@ export async function createOrder(cart, shippingPrice, address) {
 }
 
 export async function getUserOrders() {
-
     try {
         const response = await axios.get(URL_BASE + "/ordersByUserId", { withCredentials: true });
         return response.data;
@@ -52,5 +51,16 @@ export async function getUserOrders() {
         console.error(error);
         console.log(error.response?.data);
         throw new Error(error.response?.data || "Ocurrió un error al obtener las ordenes.");
+    }
+}
+
+export async function getOrderProducts(orderId) {
+    try {
+        const response = await axios.get(URL_BASE + "/ordersById" + "/" + orderId, { withCredentials: true });
+        return response.data;
+    } catch (error) {
+        console.error(error);
+        console.log(error.response?.data);
+        throw new Error(error.response?.data || "Ocurrió un error al obtener los productos de la orden.");
     }
 }

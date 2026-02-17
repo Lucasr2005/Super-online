@@ -2,6 +2,7 @@ const initialState = {
     category: "ALL",
     subCategory: [],
     brand: [],
+    orderBy: "",
     display: false
 }
 
@@ -33,6 +34,9 @@ export const filtersReducer = (state = initialState, action) => {
 
         case "@filters/setDisplay":
             return { ...state, display: action.payload };
+
+        case "@filters/setOrderBy":
+            return { ...state, orderBy: action.payload };
 
         default:
             return state;

@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { DisplayCategory } from "./DisplayCategory";
 import { useDispatch } from "react-redux";
+import { OrderBy } from "./OrderBy.jsx";
 
 const CATEGORIES = ["Sub-categoría", "Marca"];
 export function FiltersMenu({ products }) {
@@ -24,20 +25,19 @@ export function FiltersMenu({ products }) {
 
   return (
     <section className="w-full h-screen bg-gray-300 absolute z-10 p-4">
+      <OrderBy />
       <DisplayCategory
         key={CATEGORIES[0]}
         category={CATEGORIES[0]}
         options={filterOptions.subCategories}
         setOption={setSubCategory}
       />
-      <div className="mt-4">
-        <DisplayCategory
-          key={CATEGORIES[1]}
-          category={CATEGORIES[1]}
-          options={filterOptions.brands}
-          setOption={setBrand}
-        />
-      </div>
+      <DisplayCategory
+        key={CATEGORIES[1]}
+        category={CATEGORIES[1]}
+        options={filterOptions.brands}
+        setOption={setBrand}
+      />
 
       <p
         className="w-full text-center text-lg text-blue-400 underline cursor-pointer pt-10"

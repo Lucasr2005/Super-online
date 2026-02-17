@@ -1,5 +1,5 @@
 import axios from "axios";
-const URL_BASE = "http://localhost:3000/api";
+const URL_BASE = import.meta.env.VITE_BACKEND_API_URL
 export async function getShippingPrice(address) {
 
     const completeAddress = {

@@ -15,6 +15,7 @@ import { OnlyLogguedInRoutes } from "./middleware/OnlyLogguedInRoutes.jsx";
 import Checkout from "./pages/checkout/checkout.jsx";
 import { Header } from "./components/layout/header.jsx";
 import { SideBar } from "./components/layout/sidebar.jsx";
+import { Orders } from "./pages/orders/Orders.jsx";
 
 function WebRoutes() {
   const dispatch = useDispatch();
@@ -58,6 +59,10 @@ function WebRoutes() {
           <Route
             path="/carrito"
             element={<Cart />}
+          />
+          <Route
+            path="/mis-pedidos"
+            element={<Orders />}
           />
           <Route
             path="/pago"

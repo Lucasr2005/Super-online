@@ -12,7 +12,12 @@ export function Orders() {
   }, []);
 
   useEffect(() => {
-    if (!selectedOrder) return;
+    if (!selectedOrder) {
+      document.body.style.overflow = "auto";
+      return;
+    } else {
+      document.body.style.overflow = "hidden";
+    }
     getOrderProducts(selectedOrder.id).then((res) => setOrderProducts(res));
   }, [selectedOrder]);
   const handleClose = () => {

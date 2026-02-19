@@ -1,7 +1,7 @@
 export const STATE_COLORS = {
   approved: "#A7D08C",
   pending: "#F4B183",
-  rejected: "#E07A5F",
+  rejected: "#C94C4C",
 };
 const STATE_LABELS = {
   approved: "Aprobado",

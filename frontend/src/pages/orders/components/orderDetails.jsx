@@ -33,7 +33,7 @@ export function OrderDetails({ order, orderProducts, handleClose }) {
 
   return (
     <div
-      className="bg-black/65 fixed top-0 left-0 h-screen w-full z-10 flex items-center justify-center px-5"
+      className="bg-black/65 fixed top-5 left-0 h-screen w-full z-10 flex items-center justify-center px-5"
       onClick={handleClose}
     >
       <div
@@ -49,7 +49,7 @@ export function OrderDetails({ order, orderProducts, handleClose }) {
         <h1 className="font-semibold text-lg mb-2">Detalles del pedido #{order.id.slice(0, 8)}</h1>
         <OrderStateTag state={order.state} />
         <p className="text-sm text-gray-600 my-2">Dirección: {order.delivery_address}</p>
-        <div className="flex-grow overflow-y-auto my-4 border-y py-2">
+        <div className="flex-grow my-4 border-y py-2 max-h-[30vh] overflow-y-auto">
           <OrderProducts
             orderProducts={orderProducts}
             products={products}

@@ -3,12 +3,15 @@ import { createMPOrder } from "../controllers/orders/mercadoPago/createMPOrder.j
 import { createOrder } from "../controllers/orders/createOrderInDB.js"
 import { getShippingPrice } from "../controllers/orders/ShippingPrice.js"
 import { receiveWebhook } from "../controllers/orders/mercadoPago/notificationWebHook.js"
+import { getOrdersByUserId } from "../controllers/orders/getOrdersByUserId.js"
+import { getOrderProductsByOrderId } from "../controllers/orders/getOrderProductsByOrderId.js"
 
 const router = express.Router()
 
-router.get("/orders", (req, res) => {
-    res.send("Get orders")
-})
+router.get("/ordersByUserId", getOrdersByUserId)
+
+router.get("/ordersById/:orderId", getOrderProductsByOrderId)
+
 router.post("/createOrder", createOrder)
 
 router.post("/shippingPrice", getShippingPrice)

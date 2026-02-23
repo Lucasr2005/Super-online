@@ -7,6 +7,7 @@ import { MenuOptions } from "./menuOptions.jsx";
 
 export function SideBar() {
   const { displaySideBar } = useSelector((state) => state.layout);
+
   useEffect(() => {
     if (displaySideBar) {
       document.body.style.overflow = "hidden";

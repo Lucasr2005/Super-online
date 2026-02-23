@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { handleSetSidebar } from "./functions/setSidebar.js";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ShowCategories } from "./showCategories.jsx";
 
 export function MenuOptions({}) {
   const [displayCategories, setDisplayCategories] = useState(false);
+  const { isLogged } = useSelector((state) => state.user);
+
   const dispatch = useDispatch();
   return (
     <nav className="flex-1 p-4 flex flex-col gap-4">
@@ -28,13 +30,15 @@ export function MenuOptions({}) {
           >
             Carrito
           </Link>
-          <Link
-            to="/mis-pedidos"
-            className="block p-2 rounded-md hover:bg-gray-100"
-            onClick={() => handleSetSidebar({ dispatch })}
-          >
-            Mis Pedidos
-          </Link>
+          {isLogged && (
+            <Link
+              to="/mis-pedidos"
+              className="block p-2 rounded-md hover:bg-gray-100"
+              onClick={() => handleSetSidebar({ dispatch })}
+            >
+              Mis Pedidos
+            </Link>
+          )}
         </ul>
       </div>
     </nav>

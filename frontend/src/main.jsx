@@ -10,6 +10,7 @@ import { cartReducer } from "./reducers/cart.reducer.js";
 import { userReducer } from "./reducers/user.reducer.js";
 import { deliveryReducer } from "./reducers/delivery.reducer.js";
 import { layoutReducer } from "./reducers/layout.reducer.js";
+import { categoriesReducer } from "./reducers/categories.reducer.js";
 const reducers = combineReducers({
   products: productsReducer,
   filters: filtersReducer,
@@ -17,6 +18,7 @@ const reducers = combineReducers({
   user: userReducer,
   delivery: deliveryReducer,
   layout: layoutReducer,
+  categories: categoriesReducer,
 });
 const store = createStore(reducers);
 

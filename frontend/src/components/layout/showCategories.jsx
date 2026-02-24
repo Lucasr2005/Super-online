@@ -5,27 +5,20 @@ import { handleSetSidebar } from "./functions/setSidebar.js";
 import { normalizeString } from "../../functions/normalizeString.js";
 
 export function ShowCategories({ displayCategories }) {
-  const products = useSelector((state) => state.products);
-  const [categories, setCategories] = useState([]);
+  const categories = useSelector((state) => state.categories);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (!products) return;
-    const uniqueCategories = Array.from(new Set(products.map((product) => product.category)));
-    setCategories(uniqueCategories);
-  }, [products]);
-
-  if (!displayCategories) return null;
+  if (!displayCategories || !categories) return null;
   return (
     <ul className="flex flex-col  font-semibold ml-4">
       {categories.map((category) => (
-        <li key={normalizeString(category)}>
+        <li key={normalizeString(category.id)}>
           <Link
             onClick={() => handleSetSidebar({ dispatch })}
-            to={`/productos/${normalizeString(category)}`}
+            to={`/productos/${normalizeString(category.name)}`}
             className="block p-2 rounded-md font-medium hover:bg-gray-100"
           >
-            {category}
+            {category.name}
           </Link>
         </li>
       ))}

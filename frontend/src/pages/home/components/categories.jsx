@@ -2,7 +2,8 @@ import { useSelector } from "react-redux";
 import { Category } from "./category.jsx";
 
 export function Categories() {
-  const { products, categories } = useSelector((state) => state);
+  const categories = useSelector((state) => state.categories);
+  const products = useSelector((state) => state.products);
 
   const categoryCounts = products.reduce((acc, product) => {
     const { category } = product;

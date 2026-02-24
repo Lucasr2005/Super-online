@@ -3,7 +3,7 @@ import { normalizeString } from "../../../functions/normalizeString.js";
 
 export function Category({ category, count, imgName }) {
   const imgURL = import.meta.env.VITE_BACKEND_API_URL + "/category/" + imgName;
-  console.log(imgURL);
+
   return (
     <Link
       to={`/productos/${normalizeString(category)}`}

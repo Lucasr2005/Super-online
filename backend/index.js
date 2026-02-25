@@ -5,6 +5,7 @@ import productsRouter from "./routes/products.routes.js"
 import usersRouter from "./routes/users.routes.js"
 import ordersRouter from "./routes/orders.routes.js"
 import cookieParser from "cookie-parser"
+import categoriesRouter from "./routes/categories.routes.js"
 
 configDotenv({ quiet: true })
 const app = express()
@@ -15,6 +16,7 @@ app.use(cookieParser())
 app.use("/api", productsRouter)
 app.use("/api", usersRouter)
 app.use("/api", ordersRouter)
+app.use("/api", categoriesRouter)
 
 const PORT = process.env.PORT;
 

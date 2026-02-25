@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom";
+import { ShoppingBasket } from "lucide-react";
 
 export function CartEmpty() {
   return (
-    <section className="h-screen flex flex-col justify-center gap-10 mx-5 pb-16">
-      <p className="w-full text-center text-xl font-semibold">El carrito está vacío</p>
-      <div className="flex gap-4 justify-center">
+    <section className="h-screen flex flex-col justify-center items-center mx-5 pb-16">
+      <ShoppingBasket
+        size={120}
+        className="text-gray-400"
+        strokeWidth={1.5}
+      />
+      <p className="w-full text-center text-xl font-semibold my-5">El carrito está vacío</p>
+      <div className="flex gap-4 justify-center w-full">
         <Link
           to="/mis-pedidos"
           className="w-80 bg-white border-2 border-gray-200 text-gray-700 py-1 px-2 rounded-lg hover:bg-gray-50 transition-colors text-center flex items-center justify-center"

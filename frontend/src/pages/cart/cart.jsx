@@ -23,7 +23,7 @@ function Cart() {
                 <Product
                   key={p.id}
                   id={p.id}
-                  image_url={product.image_url}
+                  img_name={product.img_name}
                   name={product.name}
                   price={product.price}
                   quantity={p.quantity}

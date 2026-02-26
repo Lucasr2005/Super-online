@@ -7,7 +7,7 @@ export function displayProducts(products) {
     <Product
       key={product.id}
       id={product.id}
-      image_url={product.image_url}
+      img_name={product.img_name}
       name={product.name}
       price={product.price}
     />

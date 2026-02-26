@@ -2,10 +2,13 @@ import { useSelector } from "react-redux";
 import { Product } from "./components/product.jsx";
 import { ShippingAddress } from "./components/ShippingAddress.jsx";
 import { CartSummary } from "./components/CartSummary.jsx";
+import { CartEmpty } from "./components/cartEmpty.jsx";
 
 function Cart() {
   const products = useSelector((state) => state.products);
   const cart = useSelector((state) => state.cart);
+
+  if (!cart || cart.length === 0 || !products) return <CartEmpty />;
 
   return (
     <div className="">

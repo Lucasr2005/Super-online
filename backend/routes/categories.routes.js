@@ -6,6 +6,6 @@ const router = express.Router()
 
 router.get("/categories", getCategories)
 
-router.get("/category/:fileName", getCategoryImg)
+router.get("/public/category/:fileName", getCategoryImg)
 
 export default router

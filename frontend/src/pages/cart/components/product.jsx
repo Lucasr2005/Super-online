@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { DisplayQuantity } from "../../../components/displayQuantity";
 
-export function Product({ id, image_url, name, price, quantity }) {
+export function Product({ id, img_name, name, price, quantity }) {
   const dispatch = useDispatch();
 
   const removeProduct = (id) => {
@@ -9,6 +9,7 @@ export function Product({ id, image_url, name, price, quantity }) {
     if (!ok) return;
     dispatch({ type: "@cart/removeProduct", payload: { id } });
   };
+  const IMG_URL = import.meta.env.VITE_BACKEND_API_URL + "/public/products/" + img_name;
 
   return (
     <>
@@ -18,9 +19,9 @@ export function Product({ id, image_url, name, price, quantity }) {
           className="flex flex-row items-center gap-5 flex-1  p-3"
         >
           <img
-            src={image_url}
+            src={IMG_URL}
             alt=""
-            className="w-24 mb-5 rounded-md "
+            className="w-24 mb-5 rounded-md aspect-square"
           />
 
           <div>

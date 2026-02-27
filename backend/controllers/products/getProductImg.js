@@ -9,6 +9,7 @@ export async function getProductImg(req, res) {
             return res.sendFile(cachedFilePath);
         }
         const filePath = path.join(process.cwd(), "public", "assets", "products", fileName);
+        cache.set(`product_img_${fileName}`, filePath);
         res.sendFile(filePath);
     } catch (error) {
         console.log(error);

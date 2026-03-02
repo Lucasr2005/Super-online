@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+import { Plus, Minus } from "lucide-react";
 
 export function DisplayQuantity({ quantity, id }) {
   const dispatch = useDispatch();
@@ -22,14 +23,14 @@ export function DisplayQuantity({ quantity, id }) {
         className="px-2  text-2xl cursor-pointer rounded-full"
         onClick={() => decreaseQuantity(id)}
       >
-        -
+        <Minus size={18} />
       </button>
       <span className="text-base mx-2">{quantity}</span>
       <button
         className="px-2 py-1 cursor-pointer rounded-full "
         onClick={() => incrementQuantity(id)}
       >
-        +
+        <Plus size={18} />
       </button>
     </div>
   );

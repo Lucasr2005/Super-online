@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { handleLogout } from "./functions/logoutUser.js";
 import { handleSetSidebar } from "./functions/setSidebar.js";
-import logoutImg from "../../assets/images/logout.png";
+import { Power } from "lucide-react";
 
 export function Logout() {
   const dispatch = useDispatch();
@@ -14,12 +14,8 @@ export function Logout() {
         (handleLogout({ dispatch }), handleSetSidebar({ dispatch }));
       }}
     >
-      <img
-        src={logoutImg}
-        alt="Cerrar sesión"
-        className="w-6 h-6"
-      />
-      Cerrar sesión
+      <Power size={24} />
+      <p>Cerrar sesión</p>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import pool from "../../database/db.connection.js"
+import { cache } from "../../cache.js"
 
 export async function createProduct(req, res) {
     const { name, category_id, brand, price, stock, img_name, sub_category } = req.body
@@ -9,6 +10,9 @@ export async function createProduct(req, res) {
         const result = await pool.query("INSERT INTO products (name, category_id, brand, price, stock, img_name, sub_category) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *", [name, category_id, brand, price, stock, img_name, sub_category])
         if (result.rows.length === 0) {
             return res.status(400).json({ message: "No se ha podido ingresar el producto" })
+        }
+        if (cache.has("products")) {
+            cache.del("products")
         }
         const product = result.rows[0]
         return res.status(200).json({ message: `Producto ${product.name} creado con exito` })

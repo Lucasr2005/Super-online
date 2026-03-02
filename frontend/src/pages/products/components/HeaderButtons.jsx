@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import filterImg from "../images/filter.png";
+import { SlidersVertical } from "lucide-react";
 
 export function HeaderButtons() {
   const dispatch = useDispatch();
@@ -10,10 +10,7 @@ export function HeaderButtons() {
         onClick={() => dispatch({ type: "@filters/setDisplay", payload: true })}
       >
         <p>Filtrar y ordenar</p>
-        <img
-          className="w-5"
-          src={filterImg}
-        />
+        <SlidersVertical size={20} />
       </div>
     </header>
   );

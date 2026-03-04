@@ -37,7 +37,7 @@ function WebRoutes() {
   return (
     <BrowserRouter>
       <Toaster
-        position="bottom-right"
+        position="bottom-center"
         reverseOrder={false}
         toastOptions={{
           duration: 3000,

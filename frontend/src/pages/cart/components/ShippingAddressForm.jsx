@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 
 export function ShippingAddressForm({ onClose }) {
@@ -12,7 +13,7 @@ export function ShippingAddressForm({ onClose }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.homeType) {
-      window.alert("Debes seleccionar un tipo de vivienda");
+      toast.error("Debes seleccionar un tipo de vivienda (Casa o Departamento).");
       return;
     }
     dispatch({ type: "@delivery/setAddress", payload: formData });

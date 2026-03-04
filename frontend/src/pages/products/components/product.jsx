@@ -1,8 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { DisplayQuantity } from "../../../components/displayQuantity.jsx";
+import toast from "react-hot-toast";
 const addProduct = (id, dispatch) => {
   if (id) {
     dispatch({ type: "@cart/addProduct", payload: { id } });
+    toast.success("Producto agregado al carrito");
   }
 };
 

@@ -1,18 +1,23 @@
-import { useDispatch } from "react-redux";
 import { DisplayQuantity } from "../../../components/displayQuantity";
+import { useState } from "react";
+import { RemoveCartItem } from "../../../components/removeCartItem.jsx";
 
 export function Product({ id, img_name, name, price, quantity }) {
-  const dispatch = useDispatch();
+  const [displayRemove, setDisplayRemove] = useState(false);
 
   const removeProduct = (id) => {
-    const ok = window.confirm("Desea eliminar el producto del carrito?");
-    if (!ok) return;
-    dispatch({ type: "@cart/removeProduct", payload: { id } });
+    setDisplayRemove(true);
   };
   const IMG_URL = import.meta.env.VITE_BACKEND_API_URL + "/public/products/" + img_name;
 
   return (
     <>
+      {displayRemove && (
+        <RemoveCartItem
+          productId={id}
+          display={setDisplayRemove}
+        />
+      )}
       <article className="bg-[#FFFFFF] rounded-md flex flex-row items-start shadow-[0px_4px_8px_0px_rgba(0,_0,_0,_0.1)]">
         <section
           key={id}

@@ -3,9 +3,9 @@ import { useState } from "react";
 import { Summary } from "../../../components/Summary.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export function CartSummary() {
-  const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const { address, isAddressSet, shippingPrice } = useSelector((state) => state.delivery);
@@ -13,12 +13,11 @@ export function CartSummary() {
   const dispatch = useDispatch();
   const handleGetShippingCost = async () => {
     setIsLoading(true);
-    setError(null);
     try {
       const response = await getShippingPrice(address);
       dispatch({ type: "@delivery/setShippingPrice", payload: response.price });
     } catch (err) {
-      setError(err);
+      toast.error(err.message);
     } finally {
       setIsLoading(false);
     }
@@ -29,8 +28,7 @@ export function CartSummary() {
       const response = await createOrder(cart, shippingPrice, address);
       navigate(`/pago?orderId=${response.orderId}`);
     } catch (err) {
-      console.error(err);
-      setError(err);
+      toast.error(err.message);
     }
   };
 
@@ -56,7 +54,6 @@ export function CartSummary() {
           Confirmar orden
         </button>
       )}
-      {error && <p className="text-red-600 mt-2">{error.message}</p>}
     </section>
   );
 }

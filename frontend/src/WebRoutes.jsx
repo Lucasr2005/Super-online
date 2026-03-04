@@ -16,6 +16,7 @@ import Checkout from "./pages/checkout/checkout.jsx";
 import { Header } from "./components/layout/header.jsx";
 import { SideBar } from "./components/layout/sidebar.jsx";
 import { Orders } from "./pages/orders/Orders.jsx";
+import { Toaster } from "react-hot-toast";
 
 function WebRoutes() {
   const dispatch = useDispatch();
@@ -35,6 +36,13 @@ function WebRoutes() {
 
   return (
     <BrowserRouter>
+      <Toaster
+        position="bottom-center"
+        reverseOrder={false}
+        toastOptions={{
+          duration: 3000,
+        }}
+      />
       <Header />
       <SideBar />
       <Routes>

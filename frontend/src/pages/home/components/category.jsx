@@ -7,7 +7,7 @@ export function Category({ category, count, imgName }) {
   return (
     <Link
       to={`/productos/${normalizeString(category)}`}
-      className="group bg-card rounded-xl border border-border hover:border-primary hover:shadow-lg transition-all duration-300 flex flex-col items-center justify-center text-center aspect-square w-[100px] gap-1"
+      className="group bg-card rounded-xl border border-border hover:border-primary hover:shadow-lg transition-all duration-300 flex flex-col items-center justify-center text-center aspect-square w-[100px] min-w-[100px] gap-1"
     >
       <img
         className="w-9 h-9 text-primary transition-transform duration-300 group-hover:scale-110  "

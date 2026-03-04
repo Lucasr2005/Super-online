@@ -17,7 +17,7 @@ export function Categories() {
     <section className="py-8 px-4 ">
       <h2 className="text-2xl font-semibold mb-6 text-center ">Explora por categoría</h2>
       {categories.length > 0 ? (
-        <div className="grid grid-cols-3  gap-4">
+        <div className="grid grid-cols-3 gap-5 place-items-center w-fit mx-auto md:flex md:flex-wrap md:gap-10">
           {categories.map((category) => (
             <Category
               key={category.id}

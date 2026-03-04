@@ -34,7 +34,6 @@ export const verifyToken = async () => {
 export const logout = async () => {
     try {
         const response = await axios.get(`${URL_BASE}/logout`, { withCredentials: true });
-        console.log(response.data);
         return response.data;
     } catch (error) {
         console.error(error);

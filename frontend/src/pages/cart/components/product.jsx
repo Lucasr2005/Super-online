@@ -18,7 +18,7 @@ export function Product({ id, img_name, name, price, quantity }) {
           display={setDisplayRemove}
         />
       )}
-      <article className="bg-[#FFFFFF] rounded-md flex flex-row items-start shadow-[0px_4px_8px_0px_rgba(0,_0,_0,_0.1)]">
+      <article className="bg-[#FFFFFF] rounded-md flex flex-row items-start shadow-[0px_4px_8px_0px_rgba(0,_0,_0,_0.1)] h-36">
         <section
           key={id}
           className="flex flex-row items-center gap-5 flex-1  p-3"
@@ -43,7 +43,7 @@ export function Product({ id, img_name, name, price, quantity }) {
           </div>
         </section>
         <span
-          className="flex justify-end pr-2 text-2xl"
+          className="flex justify-end pr-2 text-2xl cursor-pointer opacity-75 hover:opacity-100 transition-opacity"
           onClick={() => removeProduct(id)}
         >
           ×

@@ -33,7 +33,7 @@ export function CartSummary() {
   };
 
   return (
-    <section className="mx-5 flex-col my-5 bg-[#FFFFFF] rounded-md shadow-[0px_4px_8px_0px_rgba(0,_0,_0,_0.1)] p-3 gap-5 py-4 mb-20">
+    <section className="mx-5 flex-col bg-[#FFFFFF] rounded-md shadow-[0px_4px_8px_0px_rgba(0,_0,_0,_0.1)] p-3 gap-5 py-4 mb-20 lg:bg-transparent lg:shadow-none lg:my-0  lg:px-0">
       <h2 className="text-xl font-semibold mb-2">Resumen de compra</h2>
       <Summary />
 
@@ -49,7 +49,7 @@ export function CartSummary() {
       {isAddressSet && shippingPrice > 0 && (
         <button
           onClick={handleCreateOrder}
-          className="bg-blue-600 text-white flex flex-1 items-center justify-center py-2 opacity-85 w-full rounded-lg mt-3 disabled:opacity-50"
+          className="bg-blue-600 text-white flex flex-1 items-center justify-center py-2 opacity-85 w-full rounded-lg mt-3 disabled:opacity-50 cursor-pointer"
         >
           Confirmar orden
         </button>

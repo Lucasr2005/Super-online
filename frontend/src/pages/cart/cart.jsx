@@ -12,8 +12,8 @@ function Cart() {
 
   return (
     <>
-      <div className="mt-5 lg:mt-10 lg:flex lg:w-4/5 lg:mx-auto lg:gap-5 lg:justify-center">
-        <section className="mx-5 flex flex-col gap-5 lg:min-w-lg lg:max-w-lg">
+      <div className="mt-5 lg:mt-10 lg:flex lg:w-4/5 lg:mx-auto lg:gap-10 lg:justify-center">
+        <section className="mx-5 flex flex-col gap-5 lg:min-w-lg lg:max-w-lg lg:mx-0">
           <h2 className="text-2xl font-semibold ">Mis productos</h2>
 
           {cart &&

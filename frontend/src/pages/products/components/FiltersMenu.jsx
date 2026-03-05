@@ -24,7 +24,7 @@ export function FiltersMenu({ products }) {
   };
 
   return (
-    <section className="w-full h-screen bg-gray-300 absolute z-10 p-4">
+    <section className="w-full h-screen bg-gray-300 absolute z-10 p-4 lg:relative lg:w-1/4 lg:h-fit lg:rounded-lg">
       <OrderBy />
       <DisplayCategory
         key={CATEGORIES[0]}
@@ -40,7 +40,7 @@ export function FiltersMenu({ products }) {
       />
 
       <p
-        className="w-full text-center text-lg text-blue-400 underline cursor-pointer pt-10"
+        className="w-full text-center text-lg text-blue-400 underline cursor-pointer pt-10 lg:hidden"
         onClick={() => dispatch({ type: "@filters/setDisplay", payload: false })}
       >
         Aplicar

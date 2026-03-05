@@ -39,7 +39,7 @@ export function CartSummary() {
 
       {isAddressSet && shippingPrice == 0 && (
         <button
-          className="bg-black py-2 opacity-85 text-white w-full rounded-lg mt-3 disabled:opacity-50"
+          className="bg-black py-2 opacity-85 text-white w-full rounded-lg mt-3 disabled:opacity-50 cursor-pointer"
           onClick={handleGetShippingCost}
           disabled={isLoading}
         >

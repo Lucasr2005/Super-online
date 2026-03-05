@@ -24,7 +24,7 @@ export function ShippingAddress() {
           </div>
         ) : (
           <button
-            className="bg-black opacity-85  text-white py-2 px-4 rounded-lg w-fit mt-5 "
+            className="bg-black opacity-85  text-white py-2 px-4 rounded-lg w-fit mt-5 cursor-pointer "
             onClick={() => setIsFormVisible(true)}
           >
             Agregar dirección

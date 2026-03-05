@@ -24,6 +24,7 @@ function Products() {
 
     const handleResize = () => {
       const isDesktop = window.innerWidth >= 1024;
+      document.body.style.overflow = isDesktop ? "auto" : displayFilters ? "hidden" : "auto";
       dispatch({ type: "@filters/setDisplay", payload: isDesktop });
     };
 
@@ -33,7 +34,7 @@ function Products() {
     return () => window.removeEventListener("resize", handleResize);
   }, [urlCategory, dispatch]);
   useEffect(() => {
-    if (displayFilters) {
+    if (displayFilters && window.innerWidth < 1024) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";

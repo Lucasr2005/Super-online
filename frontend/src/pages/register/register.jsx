@@ -93,7 +93,12 @@ function Register() {
             checked={showPassword}
             onChange={() => setShowPassword(!showPassword)}
           />
-          <label htmlFor="show_password">Mostrar contraseña</label>
+          <label
+            htmlFor="show_password"
+            className="cursor-pointer"
+          >
+            Mostrar contraseña
+          </label>
         </div>
         <p className="text-sm">
           Ya tienes una cuenta?{" "}
@@ -106,7 +111,7 @@ function Register() {
         </p>
         <button
           type="submit"
-          className="bg-blue-600 text-white py-2 rounded-md"
+          className="bg-blue-600 text-white py-2 rounded-md cursor-pointer hover:bg-blue-700 transition-colors"
         >
           Crear usuario
         </button>

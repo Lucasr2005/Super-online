@@ -37,7 +37,7 @@ export function OrderDetails({ order, orderProducts, handleClose }) {
       onClick={handleClose}
     >
       <div
-        className="w-full max-w-md bg-white p-4 rounded-lg flex flex-col max-h-[90vh]"
+        className="w-full max-w-md bg-white p-4 rounded-lg flex flex-col max-h-[90vh] md:max-w-xl"
         onClick={(e) => e.stopPropagation()}
       >
         <div
@@ -49,7 +49,7 @@ export function OrderDetails({ order, orderProducts, handleClose }) {
         <h1 className="font-semibold text-lg mb-2">Detalles del pedido #{order.id.slice(0, 8)}</h1>
         <OrderStateTag state={order.state} />
         <p className="text-sm text-gray-600 my-2">Dirección: {order.delivery_address}</p>
-        <div className="flex-grow my-4 border-y py-2 max-h-[30vh] overflow-y-auto">
+        <div className="flex-grow my-4 border-y py-2 max-h-[30vh] overflow-y-auto md:max-h-[40vh]">
           <OrderProducts
             orderProducts={orderProducts}
             products={products}

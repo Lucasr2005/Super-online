@@ -22,7 +22,7 @@ export function MercadoPagoPayment({ orderId }) {
   });
 
   return (
-    <div className="mt-4 mx-5">
+    <div className="mt-4 mx-5 md:max-w-[480px] md:mx-auto">
       {isLoading && <p className="text-sm text-gray-600">Generando botón de pago...</p>}
       {preferenceId && !isLoading && <Wallet initialization={{ preferenceId }} />}
       {error && <p className="text-red-600 mt-2">{error.message}</p>}

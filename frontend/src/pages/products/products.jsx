@@ -21,7 +21,25 @@ function Products() {
     if (urlCategory) {
       dispatch({ type: "@filters/setCategory", payload: { category: urlCategory } });
     }
+
+    const handleResize = () => {
+      const isDesktop = window.innerWidth >= 1024;
+      document.body.style.overflow = isDesktop ? "auto" : displayFilters ? "hidden" : "auto";
+      dispatch({ type: "@filters/setDisplay", payload: isDesktop });
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
   }, [urlCategory, dispatch]);
+  useEffect(() => {
+    if (displayFilters && window.innerWidth < 1024) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [displayFilters]);
 
   const filteredProducts = useMemo(() => {
     const productsByCategory = allProducts.filter(
@@ -50,10 +68,10 @@ function Products() {
   }
 
   return (
-    <section className="max-w-screen relative flow-root">
+    <section className="max-w-screen relative flow-root lg:flex lg:mt-10 lg:mx-5 lg:gap-5  ">
       {displayFilters && <FiltersMenu products={productsForMenu} />}
       <HeaderButtons />
-      <div className="grid grid-cols-2 mx-3 gap-y-5 gap-x-3 mt-5">
+      <div className="grid grid-cols-2 mx-3 gap-y-5 gap-x-3 mt-5 md:grid-cols-3 lg:mt-0 xl:grid-cols-4 lg:gap-5">
         {displayProducts(filteredProducts)}
       </div>
     </section>

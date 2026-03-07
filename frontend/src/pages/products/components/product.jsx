@@ -19,7 +19,8 @@ export function Product({ id, img_name, name, price }) {
     <>
       <div
         key={id}
-        className=" bg-[#FFFFFF] p-3 rounded-md flex flex-col items-center  shadow-[0px_4px_8px_0px_rgba(0,_0,_0,_0.1)] min-h-[340px]"
+        className=" bg-[#FFFFFF] p-3 rounded-md flex flex-col items-center  shadow-[0px_4px_8px_0px_rgba(0,_0,_0,_0.1)] min-h-[340px] max-h-[340px] max-w-[220px]
+         "
       >
         <img
           src={IMG_URL}

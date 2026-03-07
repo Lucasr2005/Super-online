@@ -23,7 +23,7 @@ export function Order({ order, setSelectedOrder }) {
       </div>
       <div className="w-full flex justify-end">
         <button
-          className="bg-blue-600  text-white  px-2 py-1 rounded-sm text-sm"
+          className="bg-blue-600  text-white  px-2 py-1 rounded-sm text-sm cursor-pointer"
           onClick={() => setSelectedOrder(order)}
         >
           Ver detalles

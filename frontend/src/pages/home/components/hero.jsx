@@ -39,10 +39,8 @@ export function Hero() {
         alt="Fondo con productos de supermercado."
       />
       <div className="max-w-3xl px-4">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
-          {slide.title}
-        </h1>
-        <p className="text-base sm:text-lg md:text-xl text-white/90">{slide.description}</p>
+        <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">{slide.title}</h1>
+        <p className="text-md  md:text-xl text-white/90">{slide.description}</p>
       </div>
       <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex space-x-3">
         {slides.map((_, index) => (

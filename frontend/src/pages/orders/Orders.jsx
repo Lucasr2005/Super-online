@@ -33,7 +33,7 @@ export function Orders() {
         handleClose={handleClose}
       />
       <h1 className="text-2xl m-5 font-semibold">Mis pedidos</h1>
-      <div className="my-5">
+      <div className="my-5 md:grid md:grid-cols-2  gap-4">
         {orders.map((order) => (
           <Order
             key={order.id}

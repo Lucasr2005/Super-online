@@ -9,7 +9,7 @@ export async function getOrdersByUserId(req, res) {
 
     try {
         const decoded = jwt.verify(auth_token, process.env.JWT_SECRET);
-        const result = await pool.query("SELECT * FROM orders WHERE user_id=$1", [decoded.id]);
+        const result = await pool.query("SELECT * FROM orders WHERE user_id=$1 ORDER BY created_at ASC", [decoded.id]);
         return res.status(200).json(result.rows);
     } catch (error) {
         if (error.name === 'JsonWebTokenError' || error.name === 'TokenExpiredError') {

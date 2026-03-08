@@ -7,7 +7,7 @@ export function Order({ order, setSelectedOrder }) {
     day: "numeric",
     hour: "numeric",
     minute: "numeric",
-  }).format(new Date(order.orderAt));
+  }).format(new Date(order.created_at));
 
   const stateColor = STATE_COLORS[order.state.toLowerCase()];
 

@@ -24,7 +24,7 @@ export function FiltersMenu({ products }) {
   };
 
   return (
-    <section className="w-full h-[90vh] overflow-y-scroll bg-gray-300 absolute z-10 p-4 lg:relative lg:w-1/4 lg:h-fit lg:rounded-lg lg:overflow-y-auto ">
+    <section className="w-full h-screen bg-gray-300 absolute z-10 p-4 lg:relative lg:w-1/4 lg:h-fit lg:rounded-lg pb-10">
       <OrderBy />
       <DisplayCategory
         key={CATEGORIES[0]}
